@@ -21,8 +21,7 @@ const navLinks: NavLink[] = [
   { href: '#news', label: 'Tin tức' },
   { href: '#contact', label: 'Đăng ký' },
   { href: 'resources', label: 'Tài Nguyên' },
-  { href: 'guide', label: 'Hướng dẫn' },
-  { href: 'quiz', label: 'Game Quiz' },
+  { href: 'guide', label: 'Hướng dẫn' }
 ];
 
 const Navbar: React.FC<NavbarProps> = ({ navigate, theme, toggleTheme }) => {
@@ -74,37 +73,37 @@ const Navbar: React.FC<NavbarProps> = ({ navigate, theme, toggleTheme }) => {
   };
 
   return (
-    <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg dark:shadow-brand-green/10">
-      <div className="container mx-auto px-6 py-3">
-        <div className="flex justify-between items-center">
+    <nav className="sticky top-0 z-50 bg-white/60 dark:bg-[rgba(6,8,15,0.75)] backdrop-blur-xl border-b border-white/10 shadow-[0_15px_30px_-20px_rgba(0,0,0,0.8)] transition-colors duration-300">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex justify-between items-center gap-6">
 
           {/* Logo + Brand Name */}
           <a
             href="#home"
             onClick={(e) => handleLinkClick(e, '#home')}
-            className="flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white uppercase tracking-wider hover:scale-105 transition-transform duration-300"
+            className="group flex items-center gap-3 text-2xl font-semibold text-gray-900 dark:text-white uppercase tracking-[0.35em] transition-transform duration-300 hover:scale-[1.02]"
           >
             <img
               src="/logo/logo.png"
-              alt="LeNin Chess Logo"
-              className="w-14 h-14 object-contain drop-shadow-lg transition-transform duration-300 hover:scale-110"
+              alt="Battle Of LeNin Logo"
+              className="w-12 h-12 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.45)] transition-transform duration-300 group-hover:scale-110"
             />
-            <span>
-              LeNin <span className="text-brand-gold">Chess</span>
+            <span className="tracking-[0.3em]">
+              Battle Of <span className="text-brand-gold">LeNin</span>
             </span>
           </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-2 rounded-full border border-white/10 bg-white/40 dark:bg-white/5 px-3 py-1.5 backdrop-blur-xl shadow-[0_10px_30px_-20px_rgba(0,0,0,0.7)]">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className={`text-gray-600 dark:text-gray-300 hover:text-brand-gold transition-colors duration-300 font-medium ${
+                className={`relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                   activeSection === link.href.substring(1)
-                    ? 'text-brand-gold border-b-2 border-brand-gold'
-                    : ''
+                    ? 'text-gray-900 dark:text-gray-50 bg-white/80 shadow-md shadow-brand-gold/30'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-brand-gold/90'
                 }`}
               >
                 {link.label}
@@ -117,7 +116,7 @@ const Navbar: React.FC<NavbarProps> = ({ navigate, theme, toggleTheme }) => {
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="hidden lg:block bg-brand-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition-transform duration-300 ease-in-out hover:scale-105"
+              className="hidden lg:inline-flex items-center justify-center rounded-full border border-brand-gold/40 bg-brand-gold/90 px-5 py-2 text-sm font-semibold text-gray-900 shadow-brand-gold/40 shadow-lg transition-all duration-300 hover:bg-amber-400 hover:shadow-xl"
             >
               Đăng ký sớm
             </a>
@@ -138,16 +137,16 @@ const Navbar: React.FC<NavbarProps> = ({ navigate, theme, toggleTheme }) => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900">
-          <div className="flex flex-col items-center py-4 space-y-4">
+        <div className="md:hidden bg-white/90 dark:bg-[rgba(6,8,15,0.95)] backdrop-blur-xl border-t border-white/10 shadow-inner">
+          <div className="flex flex-col items-center py-6 space-y-4">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-gray-600 dark:text-gray-300 hover:text-brand-gold transition-colors duration-300 ${
+                className={`w-[85%] rounded-full px-4 py-3 text-center text-sm font-semibold transition-colors duration-300 ${
                   activeSection === link.href.substring(1)
-                    ? 'text-brand-gold font-bold'
-                    : ''
+                    ? 'bg-white/80 text-gray-900 shadow-inner'
+                    : 'text-gray-700 dark:text-gray-200 hover:text-brand-gold'
                 }`}
                 onClick={(e) => handleLinkClick(e, link.href)}
               >
@@ -156,7 +155,7 @@ const Navbar: React.FC<NavbarProps> = ({ navigate, theme, toggleTheme }) => {
             ))}
             <a
               href="#contact"
-              className="bg-brand-green hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition-transform duration-300 ease-in-out hover:scale-105"
+              className="w-[85%] rounded-full border border-brand-gold/30 bg-brand-gold/90 py-3 text-center text-sm font-semibold text-gray-900 shadow-lg transition-all duration-300 hover:bg-amber-400"
               onClick={(e) => handleLinkClick(e, '#contact')}
             >
               Đăng ký sớm

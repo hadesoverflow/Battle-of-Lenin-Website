@@ -43,7 +43,10 @@ const App: React.FC = () => {
     window.scrollTo(0, 0); // Scroll to top on page change
   };
 
-  const mainClasses = "min-h-screen bg-white text-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-black dark:text-gray-200";
+  const mainClasses =
+    theme === 'light'
+      ? 'min-h-screen bg-gradient-to-br from-[#f3f1ea] via-[#efe9dd] to-[#e4dcc7] text-gray-900'
+      : 'min-h-screen bg-gradient-to-br from-[#090b14] via-[#05060d] to-[#010104] text-gray-100';
 
   if (page === 'guide') {
     return <GuidePage navigate={navigate} theme={theme} toggleTheme={toggleTheme} />;

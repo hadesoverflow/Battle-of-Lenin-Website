@@ -9,7 +9,10 @@ interface ResourcesPageProps {
 }
 
 const ResourcesPage: React.FC<ResourcesPageProps> = ({ navigate, theme, toggleTheme }) => {
-    const pageClasses = "min-h-screen font-sans bg-white text-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-black dark:text-gray-200";
+    const pageClasses =
+        theme === 'light'
+            ? "min-h-screen font-sans bg-gradient-to-br from-[#f3f1ea] via-[#efe9dd] to-[#e4dcc7] text-gray-900"
+            : "min-h-screen font-sans bg-gradient-to-br from-[#090b14] via-[#05060d] to-[#010104] text-gray-100";
 
     return (
         <div className={pageClasses}>
@@ -18,7 +21,7 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({ navigate, theme, toggleTh
                 <Resources />
             </main>
              <footer className="text-center py-8 text-gray-500 dark:text-gray-500">
-                &copy; {new Date().getFullYear()} LeNin Chess. All rights reserved.
+                &copy; {new Date().getFullYear()} Battle Of LeNin. All rights reserved.
             </footer>
         </div>
     );

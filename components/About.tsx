@@ -2,85 +2,90 @@ import React from 'react';
 import CheckIcon from './icons/CheckIcon';
 
 const ValueCard: React.FC<{ title: string; description: string }> = ({ title, description }) => (
-  <div className="bg-gray-100 dark:bg-gray-800/50 p-6 rounded-lg shadow-lg hover:shadow-brand-green/30 transition-all duration-300 transform hover:-translate-y-2 ring-1 ring-gray-200 dark:ring-gray-700 hover:ring-brand-green">
-    <div className="flex items-center mb-4">
-      <div className="bg-brand-green p-2 rounded-full mr-4">
+  <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/10 p-8 backdrop-blur-xl shadow-[0_25px_60px_-20px_rgba(0,0,0,0.6)] transition-all duration-500 hover:-translate-y-2 hover:border-brand-gold/40 hover:shadow-brand-gold/30">
+    <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-60 bg-gradient-to-br from-brand-gold/20 via-transparent to-brand-gold/10" />
+    <div className="relative flex items-start gap-4">
+      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-gold/90 text-gray-900 shadow-lg shadow-brand-gold/40">
         <CheckIcon />
       </div>
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white">{title}</h3>
+      <div>
+        <h3 className="text-xl font-semibold text-white">{title}</h3>
+        <p className="mt-3 text-sm leading-relaxed text-gray-200/80">{description}</p>
+      </div>
     </div>
-    <p className="text-gray-600 dark:text-gray-400">{description}</p>
   </div>
 );
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-20 bg-gray-50 dark:bg-dark-bg/50">
-      <div className="container mx-auto px-6">
-        {/* Tiêu đề */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-black text-gray-900 dark:text-white uppercase">
-            Về <span className="text-brand-gold">LeNin Chess</span>
+    <section id="about" className="relative overflow-hidden py-24 bg-gradient-to-br from-[#0c101b] via-[#080b12] to-[#020205] text-gray-200">
+      <div className="pointer-events-none absolute inset-0">
+        <span className="absolute left-10 top-24 h-52 w-52 rounded-full bg-brand-gold/20 blur-3xl opacity-70"></span>
+        <span className="absolute right-16 bottom-12 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl opacity-60"></span>
+      </div>
+
+      <div className="container relative mx-auto px-6">
+        <div className="text-center">
+          <span className="text-xs font-semibold uppercase tracking-[0.5em] text-brand-gold/70">Guidebook</span>
+          <h2 className="mt-6 text-4xl font-extrabold text-white md:text-5xl">
+            Hướng Dẫn Chơi <span className="text-brand-gold">Battle Of LeNin</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
-            Câu chuyện, giá trị và tầm nhìn của chúng tôi.
+          <p className="mx-auto mt-4 max-w-3xl text-base text-gray-300 md:text-lg">
+            Nắm rõ mục tiêu, cách chơi và chế độ thi đấu để tận hưởng hành trình ôn luyện FA25 đầy cảm hứng.
           </p>
         </div>
 
-        {/* Câu chuyện hình thành + Ảnh minh họa */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Nội dung */}
-          <div className="order-2 md:order-1 space-y-6">
-            <div>
-              <h3 className="text-2xl font-bold text-brand-gold mb-3">
-                Câu chuyện hình thành
-              </h3>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                <strong>LeNin Chess</strong> ra đời từ mong muốn tạo ra một sân chơi tri thức, nơi
-                người chơi có thể vừa giải trí, vừa củng cố kiến thức qua những câu hỏi thử thách.  
-                Đây không chỉ là một bàn cờ, mà là một hành trình chinh phục đỉnh cao tri thức.
+        <div className="relative mt-16 grid items-center gap-14 lg:grid-cols-[1.2fr_1fr]">
+          <div className="space-y-10">
+            <article className="rounded-[32px] border border-white/10 bg-white/5 p-10 backdrop-blur-xl shadow-[0_30px_80px_-25px_rgba(0,0,0,0.7)]">
+              <h3 className="text-2xl font-semibold text-brand-gold">Câu chuyện hình thành</h3>
+              <p className="mt-4 text-base leading-relaxed text-gray-200/85">
+                <strong>Battle Of LeNin</strong> ra đời từ mong muốn tạo nên một sân chơi nơi chiến lược, tư duy phản biện và tinh
+                thần đồng đội được bồi đắp qua từng ván đấu.
               </p>
-            </div>
+              <p className="mt-4 text-base leading-relaxed text-gray-200/85">
+                Mỗi câu hỏi là một cánh cửa mở ra chiều sâu tri thức, giúp người chơi khám phá bản thân và kết nối cộng đồng
+                yêu chủ nghĩa Mác-Lênin bằng trải nghiệm tranh biện sống động.
+              </p>
+            </article>
 
-            <div>
-              <h3 className="text-2xl font-bold text-brand-gold mb-3">
-                Tầm nhìn
-              </h3>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Trở thành một trong những trò chơi chiến lược phổ biến nhất tại Việt Nam,  
-                sau đó mở rộng ra quốc tế với nhiều phiên bản hấp dẫn.
-              </p>
+            <div className="grid gap-6 md:grid-cols-2">
+              <article className="rounded-[28px] border border-white/10 bg-white/[0.08] p-8 backdrop-blur-xl shadow-[0_20px_50px_-25px_rgba(0,0,0,0.65)]">
+                <h3 className="text-xl font-semibold text-brand-gold">Tầm nhìn</h3>
+                <p className="mt-3 text-sm leading-relaxed text-gray-200/80">
+                  Nuôi dưỡng cộng đồng học tập tương tác, đưa Battle Of LeNin trở thành biểu tượng của trò chơi chiến lược trí
+                  tuệ tại Việt Nam.
+                </p>
+              </article>
+
+              <article className="rounded-[28px] border border-white/10 bg-white/[0.06] p-8 backdrop-blur-xl shadow-[0_20px_50px_-25px_rgba(0,0,0,0.65)]">
+                <h3 className="text-xl font-semibold text-brand-gold">Sứ mệnh</h3>
+                <p className="mt-3 text-sm leading-relaxed text-gray-200/80">
+                  Truyền cảm hứng nghiên cứu và tranh biện thông qua trải nghiệm game nhập vai độc đáo, thắp lửa đam mê học hỏi
+                  của thế hệ trẻ.
+                </p>
+              </article>
             </div>
           </div>
 
-          {/* Ảnh minh họa local - giảm kích thước xuống 50% */}
-          <div className="order-1 md:order-2 flex justify-center">
-            <img
-              src="/background/leninchess-background.jpg"
-              alt="LeNin Chess Game Board"
-              className="w-1/2 rounded-lg shadow-2xl hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-        </div>
-
-        {/* Giá trị cốt lõi */}
-        <div className="mt-20">
-          <h3 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-10">
-            Giá trị cốt lõi
-          </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <ValueCard
-              title="Giải trí thông minh"
-              description="Kết hợp vui chơi và học hỏi."
-            />
-            <ValueCard
-              title="Rèn luyện tư duy"
-              description="Tư duy thép – Quyết định dứt khoát, lựa chọn mang lại kết quả."
-            />
-            <ValueCard
-              title="Kết nối cộng đồng"
-              description="Cùng bạn bè, gia đình trải qua những trận đấu kịch tính."
-            />
+          <div className="relative">
+            <div className="group relative overflow-hidden rounded-[36px] border border-white/15 bg-gradient-to-br from-white/10 via-white/5 to-white/[0.03] p-6 backdrop-blur-2xl shadow-[0_40px_100px_-40px_rgba(0,0,0,0.7)]">
+              <span className="absolute inset-0 bg-gradient-to-br from-brand-gold/15 via-transparent to-brand-gold/5 opacity-60 transition-opacity duration-500 group-hover:opacity-80"></span>
+              <img
+                src="/background/LeninBattle.jpg"
+                alt="Battle Of LeNin Game Board"
+                className="relative w-full rounded-[28px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+              <div className="relative mt-6 space-y-3 text-sm text-gray-200/85">
+                <p className="font-semibold tracking-[0.3em] uppercase text-brand-gold/80">Hướng dẫn nhanh</p>
+                <p>
+                  “Lật thẻ, chờ 3 giây để thử thách lộ diện, sau đó phản xạ thật nhanh để ghi trọn 100 điểm.”
+                </p>
+                <p>
+                  Trận đấu kết thúc khi 24 thẻ được mở – khoảnh khắc hệ thống công bố Top 1, Top 2, Top 3 đầy kịch tính.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -7,28 +7,25 @@ const developmentResources = [
 ];
 
 const quizResources = [
-    { title: "MLN111 FE Flash Cards (Set 1)", url: "https://quizlet.com/vn/1013217442/mln111-fe-flash-cards/" },
-    { title: "MLN111 Chương 1 & 2", url: "https://quizlet.com/vn/1082516329/mln111-chuong-2-mln111-chuong-1-flash-cards/" },
-    { title: "MLN111 Chương 2", url: "https://quizlet.com/vn/779361031/mln111-chuong-2-flash-cards/" },
-    { title: "MLN111 Flash Cards (Set 2)", url: "https://quizlet.com/vn/886028120/mln111-flash-cards/" },
-    { title: "MLN111 Flash Cards (Set 3)", url: "https://quizlet.com/vn/1049424657/mln111-flash-cards/" }
+    { title: "MLN122 FE Full", url: "https://quizlet.com/vn/1090982109/mln122-kinh-te-chinh-tri-full-flash-cards/" },
 ];
 
-const ResourceCard: React.FC<{ title: string; url:string; }> = ({ title, url }) => (
-    <a 
-        href={url} 
-        target="_blank" 
+const ResourceCard: React.FC<{ title: string; url: string }> = ({ title, url }) => (
+    <a
+        href={url}
+        target="_blank"
         rel="noopener noreferrer"
-        className="bg-gray-100 dark:bg-gray-800/50 p-6 rounded-lg shadow-lg group overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 hover:shadow-brand-gold/20 border-2 border-transparent hover:border-brand-gold/50 flex items-start space-x-4"
+        className="group relative flex items-start gap-5 overflow-hidden rounded-[28px] border border-white/10 bg-white/10 p-6 backdrop-blur-xl shadow-[0_20px_50px_-25px_rgba(0,0,0,0.6)] transition-all duration-500 hover:-translate-y-2 hover:border-brand-gold/40 hover:shadow-brand-gold/25"
     >
-        <div className="flex-shrink-0 bg-brand-gold p-3 rounded-full mt-1 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+        <span className="absolute inset-0 bg-gradient-to-br from-brand-gold/15 via-transparent to-brand-gold/5 opacity-0 transition-opacity duration-500 group-hover:opacity-70"></span>
+        <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-gold/90 text-gray-900 shadow-lg shadow-brand-gold/40 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
             <LinkIcon />
         </div>
-        <div>
-            <h4 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-brand-gold transition-colors duration-300 mb-2">{title}</h4>
-            <p className="text-sm text-gray-500 dark:text-gray-400 break-all">{url}</p>
-            <p className="text-brand-gold font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2 text-xs">
-                Truy cập liên kết &rarr;
+        <div className="relative">
+            <h4 className="text-lg font-semibold text-white transition-colors duration-300 group-hover:text-brand-gold">{title}</h4>
+            <p className="mt-2 text-sm text-gray-300 break-all">{url}</p>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.3em] text-brand-gold/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                Truy cập &rarr;
             </p>
         </div>
     </a>
@@ -36,52 +33,47 @@ const ResourceCard: React.FC<{ title: string; url:string; }> = ({ title, url }) 
 
 const Resources: React.FC = () => {
     return (
-        <section id="resources" className="py-20 bg-gray-50 dark:bg-dark-bg/50">
-            <div className="container mx-auto px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-black text-gray-900 dark:text-white uppercase">
-                        Nguồn Dữ Liệu & <span className="text-brand-gold">Tài Nguyên</span>
-                    </h2>
+    <section id="resources" className="relative overflow-hidden bg-[#060810] py-24 text-gray-100">
+        <div className="pointer-events-none absolute inset-0">
+            <span className="absolute left-10 top-16 h-56 w-56 rounded-full bg-brand-gold/15 blur-3xl opacity-70"></span>
+            <span className="absolute right-20 bottom-12 h-60 w-60 rounded-full bg-emerald-500/10 blur-3xl opacity-70"></span>
+        </div>
+
+        <div className="container relative mx-auto px-6">
+            <div className="text-center">
+                <span className="text-xs font-semibold uppercase tracking-[0.5em] text-brand-gold/70">Knowledge Vault</span>
+                <h2 className="mt-6 text-4xl md:text-5xl font-extrabold text-white">
+                    Nguồn Dữ Liệu &amp; <span className="text-brand-gold">Tài Nguyên</span>
+                </h2>
+                <p className="mx-auto mt-4 max-w-3xl text-base text-gray-300">
+                    Kho tư liệu được tuyển chọn để nuôi dưỡng tinh thần triết học và chiến lược của Battle Of LeNin.
+                </p>
+            </div>
+
+            <div className="relative mx-auto mt-16 max-w-4xl space-y-20">
+                <div>
+                    <h3 className="text-center text-2xl font-semibold text-brand-gold uppercase tracking-[0.3em]">Tài nguyên xây dựng game</h3>
+                    <div className="mt-10 grid gap-6">
+                        {developmentResources.map((link, index) => (
+                            <ResourceCard key={`dev-${index}`} title={link.title} url={link.url} />
+                        ))}
+                    </div>
                 </div>
 
-                <div className="max-w-4xl mx-auto">
-                    {/* Phần 1: Tài nguyên xây dựng game */}
-                    <div className="mb-20">
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center border-b-2 border-brand-gold/50 pb-4">
-                            Tài nguyên Xây dựng Game
-                        </h3>
-                        <div className="grid md:grid-cols-1 gap-6">
-                            {developmentResources.map((link, index) => (
-                                <ResourceCard
-                                    key={`dev-${index}`}
-                                    title={link.title}
-                                    url={link.url}
-                                />
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Phần 2: Dữ liệu câu hỏi Quiz */}
-                    <div>
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center border-b-2 border-brand-gold/50 pb-4">
-                            Dữ liệu câu hỏi Quiz
-                        </h3>
-                         <p className="text-center text-gray-600 dark:text-gray-400 mb-10 max-w-3xl mx-auto">
-                            Tất cả dữ liệu câu hỏi trong game "LeNin Chess" được tham khảo và tổng hợp từ các bộ câu hỏi công khai trên Quizlet. Chúng tôi đã thu thập hơn 500 câu hỏi để tạo ra một trải nghiệm Game Quiz phong phú và thử thách.
-                        </p>
-                        <div className="grid md:grid-cols-1 gap-6">
-                            {quizResources.map((link, index) => (
-                                <ResourceCard
-                                    key={`quiz-${index}`}
-                                    title={link.title}
-                                    url={link.url}
-                                />
-                            ))}
-                        </div>
+                <div>
+                    <h3 className="text-center text-2xl font-semibold text-brand-gold uppercase tracking-[0.3em]">Dữ liệu câu hỏi Quiz</h3>
+                    <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-gray-300">
+                        Tất cả dữ liệu câu hỏi trong game "Battle Of LeNin" được tham khảo từ các bộ đề công khai, được tuyển lọc và phân loại kỹ lưỡng nhằm tạo ra trải nghiệm đa chiều và uyên thâm.
+                    </p>
+                    <div className="mt-8 grid gap-6">
+                        {quizResources.map((link, index) => (
+                            <ResourceCard key={`quiz-${index}`} title={link.title} url={link.url} />
+                        ))}
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
     );
 };
 
