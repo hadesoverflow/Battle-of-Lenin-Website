@@ -1,11 +1,6 @@
 import React from 'react';
 import LinkIcon from './icons/LinkIcon';
 
-const developmentResources = [
-    { title: "Ý tưởng phát triển game", url: "https://2game.vn/game/co-ty-phu-mobile" },
-    { title: "Ý tưởng xây dựng nhân vật", url: "https://img.9gate.net/files/317931873/2014/09/08/1410167340-cotyphu2.jpg" }
-];
-
 const quizResources = [
     { title: "MLN122 FE Full", url: "https://quizlet.com/vn/1090982109/mln122-kinh-te-chinh-tri-full-flash-cards/" },
 ];
@@ -50,16 +45,7 @@ const Resources: React.FC = () => {
                 </p>
             </div>
 
-            <div className="relative mx-auto mt-16 max-w-4xl space-y-20">
-                <div>
-                    <h3 className="text-center text-2xl font-semibold text-brand-gold uppercase tracking-[0.3em]">Tài nguyên xây dựng game</h3>
-                    <div className="mt-10 grid gap-6">
-                        {developmentResources.map((link, index) => (
-                            <ResourceCard key={`dev-${index}`} title={link.title} url={link.url} />
-                        ))}
-                    </div>
-                </div>
-
+            <div className="relative mx-auto mt-16 max-w-4xl">
                 <div>
                     <h3 className="text-center text-2xl font-semibold text-brand-gold uppercase tracking-[0.3em]">Dữ liệu câu hỏi Quiz</h3>
                     <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-gray-300">
